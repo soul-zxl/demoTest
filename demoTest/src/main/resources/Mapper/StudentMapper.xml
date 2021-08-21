@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--要与mapper保持一致-->
+<mapper namespace="com.example.demotest.mapper.StudentMapper">
+    <select id="select"  resultMap="getStudent">
+           select  s.id sid, s.name sname , t.name tname FROM student s,teacher t WHERE s.tid=t.id
+</select>
+
+    <resultMap id="getStudent" type="com.example.demotest.entity.Student">
+   <result property="id" column="sid"/>
+        <result property="name" column="sname"/>
+        <association property="teacher" javaType="com.example.demotest.entity.Teacher">
+           <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+
+
+
+    <select id="selectif" resultType="com.example.demotest.entity.Student" parameterType="map">
+        select * from  student
+        where
+        1=1
+        <if test="title !=null">
+            and name =#{name}
+        </if>
+        <if test="author 1=null">
+            and pass=#{pass}
+        </if>
+
+    </select>
+
+
+    <select id="list111111"  resultType="com.example.demotest.vo.VO">
+        SELECT s.`name`,b.title,b.author
+   FROM user s,blog b
+-- 	 where s.id=b.tid
+-- 	 and
+-- 	 (b.title LIKE "%#{btitle}%"
+-- 	 OR
+-- 	 s.name like "%#{sname}%")
+    </select>
+
+
+
+</mapper>

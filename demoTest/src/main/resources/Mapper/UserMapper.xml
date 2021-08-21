@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--要与mapper保持一致-->
+<mapper namespace="com.example.demotest.mapper.UserMapper">
+
+<!--    类型别名是为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全
+限定名的冗余。-->
+
+
+
+
+
+<!--id绑定的UserMapper的方法名      resultType是sql的返回类型           -->
+    <select id="select" resultType="com.example.demotest.entity.User">
+    select * from user
+    </select>
+
+<!--    parameterType  传递参数类型   -->
+<select id="selectById" resultType="com.example.demotest.entity.User" parameterType="int">
+      select *from user where id=#{id}
+    </select>
+<insert id="insert" parameterType="com.example.demotest.entity.User">
+    insert into user (id,name,pass) values (#{id},#{name},#{pass})
+
+
+</insert>
+<update id="update" parameterType="com.example.demotest.entity.User">
+    update user set name = #{name},pass=#{pass} where id=#{id} ;
+</update>
+<delete id="delete" parameterType="int">
+    delete from user where id=#{id}
+
+
+</delete>
+
+    <insert id="insert2" parameterType="com.example.demotest.entity.User">
+         insert into user (name,pass) values (#{name},#{pass})
+    </insert>
+
+    <update id="update2" parameterType="map">
+        update user set name = #{username},pass=#{passworld} where id =#{userid} ;
+
+    </update>
+
+
+    <select id="select3" parameterType="map" resultType="com.example.demotest.entity.User">
+        select * from user where name=#{username} and pass=#{passworld}
+    </select>
+
+    <select id="selectLike" parameterType="string" resultType="com.example.demotest.entity.User">
+        select * from user where name like "%"#{vlues}"%"
+
+    </select>
+
+
+
+</mapper>
