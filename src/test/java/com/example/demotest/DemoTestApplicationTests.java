@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 @SpringBootTest
-class DemoTestApplicationTests {
+class  reflectTests {
     //Class Clazz = Class.forName("com.example.demotest.entity.User");
     //
     //DemoTestApplicationTests() throws ClassNotFoundException {

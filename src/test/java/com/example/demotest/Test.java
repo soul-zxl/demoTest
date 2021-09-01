@@ -116,7 +116,15 @@ public class Test {
     //    ArrayList<Object> objects = Lists.newArrayList();
     //    StringUtils.isBlank()
     //}
+    @org.junit.jupiter.api.Test
+    public void test11() {
 
+        String str1 = "";
+        String substring = str1.substring(0, 1);
+        str1.charAt(0);
+        System.out.println(str1.charAt(1));
+
+    }
 
 
 
